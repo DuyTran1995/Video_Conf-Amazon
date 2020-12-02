@@ -1,0 +1,52 @@
+{
+  "npmScope": "tutelage-monorepo",
+  "implicitDependencies": {
+    "workspace.json": "*",
+    "package.json": {
+      "dependencies": "*",
+      "devDependencies": "*"
+    },
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "tasksRunnerOptions": {
+    "default": {
+      "runner": "@nrwl/workspace/tasks-runners/default",
+      "options": {
+        "cacheableOperations": ["build", "lint", "test", "e2e"]
+      }
+    }
+  },
+  "projects": {
+    "video-conf-app": {
+      "tags": []
+    },
+    "video-conf-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["video-conf-app"]
+    },
+    "chime-service": {
+      "tags": []
+    },
+    "ws-root-apig": {
+      "tags": []
+    },
+    "tutelage-app": {
+      "tags": []
+    },
+    "tutelage-app-e2e": {
+      "tags": [],
+      "implicitDependencies": ["tutelage-app"]
+    },
+    "tutelage-service": {
+      "tags": []
+    },
+    "shared-react-util": {
+      "tags": []
+    },
+    "tutelage-api-interfaces": {
+      "tags": []
+    }
+  }
+}

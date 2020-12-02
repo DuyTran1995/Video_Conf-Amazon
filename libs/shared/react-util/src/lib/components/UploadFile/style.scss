@@ -1,0 +1,72 @@
+.box-upload {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px #e2e2e3 dashed;
+  border-radius: 10px;
+  position: relative;
+  overflow: auto;
+  overflow: hidden;
+}
+
+.box-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper-upload {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.btn-submit {
+  border: 1px solid black;
+  background-color: #6edfcd;
+}
+
+.btn-submit:hover {
+  color: white;
+}
+
+.content {
+  width: 100%;
+}
+
+.content-image {
+  display: flex;
+  flex-direction: column;
+}
+
+.icon-delete {
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+}
+
+.icon-delete:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+}
+
+// .image:hover {
+//   cursor: default;
+// }
+
+// .upload {
+//   cursor: default !important;
+// }
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  margin: 5px auto 5px auto;
+}

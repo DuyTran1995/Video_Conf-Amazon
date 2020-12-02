@@ -1,0 +1,13 @@
+.group-filed {
+  .item:not(:last-child) {
+    .btn-action-add {
+      display: none !important;
+    }
+  }
+}
+
+#field02 {
+  .react-datepicker-wrapper {
+    width: 100%;
+  }
+}

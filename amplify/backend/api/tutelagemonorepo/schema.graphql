@@ -1,0 +1,101 @@
+type Booking @model
+  @key(name: "byLearner", fields: ["learnerID", "status"])
+  @key(name: "byTutor", fields: ["tutorID", "status"]) {
+  id: ID!
+  timezone: String!
+  status: String!
+  learnerID: ID!
+  tutorID: ID!
+  subject: String!
+  conferences: [Conference] @connection(keyName: "byBooking", fields: ["id"])
+  messages: [Message] @connection(keyName: "byThread", fields: ["id"])
+}
+
+type Conference @model
+  @key(name: "byBooking", fields: ["bookingID", "status"]) {
+  id: ID!
+  bookingID: ID!
+  startDate: String!
+  duration: Float!
+  status: String!
+}
+
+type Learner @model {
+  id: ID!
+  name: String!
+  gender: String!
+  phone: String!
+  avatar: String!
+  bookings: [Booking] @connection(keyName: "byLearner", fields: ["id"])
+  tutors: [LearnerTutor] @connection(keyName: "byLearner", fields: ["id"])
+}
+
+type Tutor @model
+  @key(name: "byRate", fields: ["rate", "status"], queryField: "tutorByRateByStatus")
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  rate: String!
+  name: String!
+  gender: String!
+  phone: String!
+  address: String!
+  city: String!
+  zipcode: String!
+  state: String!
+  country: String!
+  timezone: String!
+  avatar: String!
+  biography: String
+  status: String!
+  certifications: String!
+  subjects: [String]!
+  availabilities: String!
+  ratings: [Rating] @connection(keyName: "byTutor", fields: ["id"])
+  bookings: [Booking] @connection(keyName: "byTutor", fields: ["id"])
+  learners: [LearnerTutor] @connection(keyName: "byTutor", fields: ["id"])
+}
+
+type LearnerTutor @model(queries: null)
+  @key(name: "byLearner", fields: ["learnerID", "tutorID"])
+  @key(name: "byTutor", fields: ["tutorID", "learnerID"])
+  @auth(
+    rules: [
+      { allow: owner }
+    ]
+  ) {
+  id: ID!
+  learnerID: ID!
+  tutorID: ID!
+  learner: Learner! @connection(fields: ["learnerID"])
+  tutor: Tutor! @connection(fields: ["tutorID"])
+}
+
+type Rating @model
+  @key(name: "byTutor", fields: ["tutorID", "level"])
+  @auth(
+    rules: [
+      { allow: owner }
+      { allow: public, provider: iam, operations: [read] }
+    ]
+  ) {
+  id: ID!
+  tutorID: ID!
+  conferenceID: ID!
+  level: Int!
+  content: String
+}
+
+type Message @model
+  @key(name: "byThread", fields: ["threadID"]) {
+  id: ID!
+  threadID: ID!
+  senderID: ID!
+  receiverID: String!
+  content: String!
+  status: String!
+}

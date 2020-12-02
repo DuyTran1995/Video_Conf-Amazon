@@ -1,0 +1,12 @@
+.menu-user {
+  &__item {
+    &-dropdown {
+      width: 160px !important;
+      & > button {
+        &::after {
+          margin-left: 0.5em;
+        }
+      }
+    }
+  }
+}

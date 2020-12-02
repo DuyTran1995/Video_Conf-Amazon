@@ -1,0 +1,7 @@
+.group-filed {
+  .item:not(:last-child) {
+    .btn-action-add {
+      display: none !important;
+    }
+  }
+}

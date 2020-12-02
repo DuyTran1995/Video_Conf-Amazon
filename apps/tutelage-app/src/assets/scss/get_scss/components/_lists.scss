@@ -1,0 +1,76 @@
+.colitem-3 {
+  > * {
+    width: 33.33%;
+  }
+}
+.list--step {
+  max-width: 840px;
+  margin: 0 auto;
+  @include flex-center();
+  li {
+    @include flex-center();
+    em {
+      display: block;
+    }
+  }
+}
+.list-tutor {
+  border: none;
+  border-radius: 0;
+  * {
+    border: none;
+  }
+  .media {
+    .w-25 {
+      min-width: 40px;
+      width: 40px !important;
+    }
+  }
+  .media-body {
+    padding-right: 65px;
+    position: relative;
+    .badge {
+      position: absolute;
+      @include flex-center();
+      position: absolute;
+      left: auto;
+      right: 0;
+      width: 60px;
+      height: 24px;
+      border-radius: 100px;
+      color: #fff;
+      overflow: hidden;
+      white-space: nowrap;
+      font-size: 12px;
+      top: 0%;
+    }
+    h5 {
+      font-size: 15px;
+      margin-bottom: 5px;
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.2;
+      word-break: break-all;
+    }
+    .date {
+      color: rgba($color: #000000, $alpha: 0.4);
+      font-size: 12px;
+    }
+  }
+  > li {
+    padding: 0 1rem;
+    margin-top: -1px;
+
+    > a {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 2px solid $color_gray_l;
+      position: relative;
+      z-index: 9;
+    }
+    &:hover {
+      background-color: $color_gray_l;
+    }
+  }
+}

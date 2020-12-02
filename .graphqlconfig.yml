@@ -1,0 +1,16 @@
+projects:
+  tutelagemonorepo:
+    schemaPath: libs/tutelage/api-interfaces/src/graphql-apis/graphql/schema.json
+    includes:
+      - libs/tutelage/api-interfaces/src/graphql-apis/graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: libs/tutelage/api-interfaces/src/graphql-apis/API.ts
+        docsFilePath: libs/tutelage/api-interfaces/src/graphql-apis/graphql
+        maxDepth: 2
+extensions:
+  amplify:
+    version: 3

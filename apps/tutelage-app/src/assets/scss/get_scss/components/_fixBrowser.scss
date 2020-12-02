@@ -1,0 +1,11 @@
+.firefox {
+  .block-range::after,
+  .block-range::before {
+    width: 15px;
+    height: 15px;
+    background-color: #dee2e6;
+  }
+  .block-range .start-range {
+    bottom: -25px;
+  }
+}

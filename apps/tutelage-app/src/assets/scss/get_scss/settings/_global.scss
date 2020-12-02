@@ -1,0 +1,20 @@
+// Font family
+@font-face {
+  font-family: 'avenirLTStd';
+  src: url(../fonts/AvenirLTStd-Medium.otf);
+}
+
+$font_base: 'avenirLTStd', sans-serif;
+// Font size (px)
+$base_font_size: 16;
+
+$opacity_base: 0.5;
+
+// Size content
+$width_xs: 350px;
+$width_small: 800px;
+$pc_width_max: 1100px;
+
+body {
+  overflow-x: hidden;
+}

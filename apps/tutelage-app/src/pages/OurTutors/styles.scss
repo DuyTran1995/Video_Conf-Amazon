@@ -1,0 +1,22 @@
+.section--our-tutors {
+  .list-our-tutors {
+    .item {
+      .fz18.text-muted,
+      .fz14.desc {
+        text-align: justify;
+      }
+    }
+
+    .fz24.text-danger {
+      @media (max-width: 767px) {
+        text-align: center;
+      }
+    }
+
+    .responsive-center {
+      @media (max-width: 767px) {
+        text-align: center !important;
+      }
+    }
+  }
+}

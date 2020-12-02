@@ -1,0 +1,42 @@
+{
+    "local": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-tutelagemonorepo-local-134150-authRole",
+            "UnauthRoleArn": "arn:aws:iam::652737721397:role/amplify-tutelagemonorepo-local-134150-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::652737721397:role/amplify-tutelagemonorepo-local-134150-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "amplify-tutelagemonorepo-local-134150-deployment",
+            "UnauthRoleName": "amplify-tutelagemonorepo-local-134150-unauthRole",
+            "StackName": "amplify-tutelagemonorepo-local-134150",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:652737721397:stack/amplify-tutelagemonorepo-local-134150/1b928660-c0e6-11ea-8916-0a6602c8251e",
+            "AmplifyAppId": "d21tqdpez2q4cl"
+        },
+        "categories": {
+            "auth": {
+                "tutelagemonorepoe0bdc453": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"719013298864454\",\"client_secret\":\"fbba0d89d675159f21b7a7dab5504c6e\"}]"
+                }
+            }
+        }
+    },
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-tutelagemonorepo-dev-135750-authRole",
+            "UnauthRoleArn": "arn:aws:iam::652737721397:role/amplify-tutelagemonorepo-dev-135750-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::652737721397:role/amplify-tutelagemonorepo-dev-135750-authRole",
+            "Region": "ap-southeast-1",
+            "DeploymentBucketName": "amplify-tutelagemonorepo-dev-135750-deployment",
+            "UnauthRoleName": "amplify-tutelagemonorepo-dev-135750-unauthRole",
+            "StackName": "amplify-tutelagemonorepo-dev-135750",
+            "StackId": "arn:aws:cloudformation:ap-southeast-1:652737721397:stack/amplify-tutelagemonorepo-dev-135750/57719a70-c0e8-11ea-81c7-0a58c7c408be",
+            "AmplifyAppId": "d21tqdpez2q4cl"
+        },
+        "categories": {
+            "auth": {
+                "tutelagemonorepoe0bdc453": {
+                    "hostedUIProviderCreds": "[{\"ProviderName\":\"Facebook\",\"client_id\":\"2742994955931251\",\"client_secret\":\"c7f9f17234d00dc59406f048c08776d6\"}]"
+                }
+            }
+        }
+    }
+}

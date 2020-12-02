@@ -1,0 +1,91 @@
+GatewayResponseDefault4XX:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: DEFAULT_4XX
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "message": ''Unauthorized error occurs.'' }'
+    RestApiId: !Ref ApiGatewayRestApi
+    StatusCode: 403
+GatewayResponseIntegrationTimeout:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: INTEGRATION_TIMEOUT
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "IntegrationTimeout", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseUnsupportedMediaType:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: UNSUPPORTED_MEDIA_TYPE
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "UnsupportedMediaType", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseResourceNotFound:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: RESOURCE_NOT_FOUND
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "ResourceNotFound", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseAccessDenied:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: ACCESS_DENIED
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "NotAuthorized", "message": $context.error.messageString, "errorMessage": "$context.authorizer.customErrorMessage" }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseExpiredToken:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: EXPIRED_TOKEN
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "TokenExpired", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseMissingAuthnticationToken:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: MISSING_AUTHENTICATION_TOKEN
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "MissingToken", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseUnauthorized:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: UNAUTHORIZED
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "AuthenticationFailure", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi
+GatewayResponseInvalidSignature:
+  Type: AWS::ApiGateway::GatewayResponse
+  Properties:
+    ResponseType: INVALID_SIGNATURE
+    ResponseParameters:
+      gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+      gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
+    ResponseTemplates:
+      application/json: '{ "code": "InvalidSignature", "message": $context.error.messageString }'
+    RestApiId: !Ref ApiGatewayRestApi

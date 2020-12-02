@@ -1,0 +1,7 @@
+.group-filed .item:last-child .btn-action-remove {
+  display: none !important;
+}
+
+.group-filed .item:not(:last-child) .btn-action-remove {
+  display: block !important;
+}

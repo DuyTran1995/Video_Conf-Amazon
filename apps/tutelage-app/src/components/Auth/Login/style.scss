@@ -1,0 +1,10 @@
+.form-check--align {
+  display: inline-block;
+  vertical-align: middle;
+  text-align: right;
+
+  .form-check--custom.text-right {
+    height: 100%;
+    line-height: 34px;
+  }
+}

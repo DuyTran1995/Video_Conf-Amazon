@@ -1,0 +1,307 @@
+.ic-arrow-next,
+.ic-arrow-prev,
+.ic-deco-01,
+.ic-add,
+.ic-face,
+.ic-insta,
+.ic-star-01,
+.ic-arrow-next-01,
+.ic-arrow-prev-01,
+.ic-question,
+.ic-email,
+.ic-local,
+.ic-lightning,
+.ic-phone,
+.ic-quote,
+.ic-search,
+.ic-arrow-right-white,
+.ic-arrow-gray-01,
+.ic-arrow-gray-02,
+.ic-arrow-expan {
+  display: inline-block;
+  background: url('../images/sprite.png') no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+.ic-arrow-next {
+  background-position: -2px -0px;
+  width: 61px;
+  height: 62px;
+}
+.ic-arrow-prev {
+  background-position: -2px -64px;
+  width: 61px;
+  height: 62px;
+}
+.ic-deco-01 {
+  background-position: -2px -128px;
+  width: 60px;
+  height: 59px;
+}
+.ic-add {
+  background-position: -2px -189px;
+  width: 40px;
+  height: 40px;
+}
+.ic-face {
+  background-position: -2px -231px;
+  width: 38px;
+  height: 38px;
+}
+.ic-insta {
+  background-position: -2px -271px;
+  width: 38px;
+  height: 38px;
+}
+.ic-star-01 {
+  background-position: -2px -311px;
+  width: 34px;
+  height: 32px;
+}
+.ic-arrow-next-01 {
+  background-position: -2px -345px;
+  width: 32px;
+  height: 32px;
+}
+.ic-arrow-prev-01 {
+  background-position: -2px -379px;
+  width: 32px;
+  height: 32px;
+}
+.ic-question {
+  background-position: -2px -413px;
+  width: 29px;
+  height: 32px;
+}
+.ic-email {
+  background-position: -33px -413px;
+  width: 28px;
+  height: 21px;
+}
+.ic-local {
+  background-position: -33px -436px;
+  width: 27px;
+  height: 36px;
+}
+.ic-lightning {
+  background-position: -36px -345px;
+  width: 24px;
+  height: 32px;
+}
+.ic-phone {
+  background-position: -38px -311px;
+  width: 22px;
+  height: 29px;
+}
+.ic-quote {
+  background-position: -2px -447px;
+  width: 22px;
+  height: 73px;
+}
+.ic-search {
+  background-position: -44px -189px;
+  width: 17px;
+  height: 17px;
+}
+.ic-arrow-right-white {
+  background-position: -44px -208px;
+  width: 16px;
+  height: 13px;
+}
+.ic-arrow-gray-01 {
+  background-position: -44px -223px;
+  width: 8px;
+  height: 13px;
+}
+.ic-arrow-gray-02 {
+  background-position: -42px -238px;
+  width: 8px;
+  height: 13px;
+}
+.ic-arrow-expan {
+  background-position: -54px -223px;
+  width: 6px;
+  height: 12px;
+}
+.ic-totop,
+.ic-twitter,
+.ic-tree,
+.ic-star-02,
+.ic-trend-up-icon,
+.ic-user-01,
+.ic-user {
+  display: inline-block;
+  background: url('../images/sprite-02.png') no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+.ic-totop {
+  background-position: -2px -0px;
+  width: 78px;
+  height: 78px;
+}
+.ic-twitter {
+  background-position: -2px -80px;
+  width: 38px;
+  height: 38px;
+}
+.ic-tree {
+  background-position: -42px -80px;
+  width: 32px;
+  height: 32px;
+}
+.ic-star-02 {
+  background-position: -42px -114px;
+  width: 31px;
+  height: 30px;
+}
+.ic-trend-up-icon {
+  background-position: -2px -120px;
+  width: 25px;
+  height: 14px;
+}
+.ic-user-01 {
+  background-position: -2px -136px;
+  width: 24px;
+  height: 25px;
+}
+.ic-user {
+  background-position: -28px -146px;
+  width: 20px;
+  height: 20px;
+}
+.ic-user-02 {
+  width: 24px;
+  height: 25px;
+  background: url('../images/icon/user-02.png');
+  display: inline-block;
+}
+.ic-alert-close,
+.ic-bell,
+.ic-face-b,
+.ic-card-number,
+.ic-pay,
+.ic-address-card,
+.ic-card,
+.ic-edit,
+.ic-pressed-notification,
+.ic-language,
+.ic-exp-close,
+.ic-exp,
+.ic-user-w,
+.ic-select,
+.ic-dotted,
+.ic-triang {
+  display: inline-block;
+  background: url('../images/sprite-03.png') no-repeat;
+  overflow: hidden;
+  text-indent: -9999px;
+  text-align: left;
+}
+
+.ic-alert-close {
+  background-position: -0px -0px;
+  width: 57px;
+  height: 57px;
+}
+.ic-bell {
+  background-position: -0px -57px;
+  width: 48px;
+  height: 52px;
+}
+.ic-face-b {
+  background-position: -0px -109px;
+  width: 35px;
+  height: 35px;
+}
+.ic-card-number {
+  background-position: -0px -144px;
+  width: 32px;
+  height: 21px;
+}
+.ic-pay {
+  background-position: -0px -165px;
+  width: 32px;
+  height: 32px;
+}
+.ic-address-card {
+  background-position: -0px -197px;
+  width: 28px;
+  height: 22px;
+}
+.ic-card {
+  background-position: -28px -197px;
+  width: 26px;
+  height: 20px;
+}
+.ic-edit {
+  background-position: -28px -217px;
+  width: 26px;
+  height: 23px;
+}
+.ic-pressed-notification {
+  background-position: -0px -219px;
+  width: 26px;
+  height: 32px;
+}
+.ic-language {
+  background-position: -32px -144px;
+  width: 25px;
+  height: 28px;
+}
+.ic-exp-close {
+  background-position: -32px -172px;
+  width: 24px;
+  height: 24px;
+}
+.ic-exp {
+  background-position: -26px -240px;
+  width: 24px;
+  height: 24px;
+}
+.ic-user-w {
+  background-position: -35px -109px;
+  width: 20px;
+  height: 20px;
+}
+.ic-select {
+  background-position: -35px -129px;
+  width: 10px;
+  height: 5px;
+}
+.ic-dotted {
+  background-position: -48px -57px;
+  width: 6px;
+  height: 6px;
+}
+.ic-triang {
+  background-position: -48px -63px;
+  width: 5px;
+  height: 6px;
+}
+.ic-close-modal {
+  width: 57px;
+  height: 57px;
+  background: url('../images/icon/close-modal.png');
+  display: inline-block;
+}
+.ic-arrow-right-green {
+  width: 46px;
+  height: 46px;
+  background: url('../images/icon/arrow-right-green.png');
+  display: inline-block;
+}
+.ic-dot-red {
+  display: inline-block;
+  span {
+    width: 10px;
+    height: 10px;
+    background-color: $color_red;
+    border-radius: 50%;
+    margin: 0 6px;
+  }
+}

@@ -1,0 +1,160 @@
+.menu-user {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .menu-user__link {
+    &--login {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: calculate-rem(134px);
+      height: 47px;
+      border-radius: 100px;
+      background-color: $color_green;
+
+      em {
+        margin-right: calculate-rem(19px);
+      }
+    }
+  }
+
+  .menu-user__item {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+}
+
+@include bp('1200px') {
+  #navbarMain {
+    .nav-item {
+      margin-right: 60px;
+    }
+  }
+  .menu-user .menu-user__item {
+    + .menu-user__item {
+      margin-left: 35px;
+    }
+  }
+}
+
+.list-links {
+  background-color: #fff;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  padding: 8px 0;
+
+  li {
+    width: 100%;
+
+    a {
+      font-size: 18px;
+      line-height: 24px;
+      text-align: center;
+      width: 100%;
+      padding: 8px 0;
+
+      &:hover {
+        color: $color_base;
+        background-color: #f5f5f5;
+      }
+    }
+  }
+}
+
+.dropdown-toggle {
+  &.show {
+    + .dropdown-menu {
+      display: block;
+    }
+  }
+}
+
+.dismiss-menu {
+  display: none;
+}
+
+@include bp(0, '992px') {
+  .header {
+    padding: 0;
+    height: 79px;
+  }
+
+  .navbar-expand-lg .navbar-collapse {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    //TODO: Nho Vinh check lai
+    //z-index: 999;
+    background: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: -99;
+    opacity: 0;
+
+    &.show {
+      opacity: 1;
+      z-index: 99;
+      transition: opacity 0.3s;
+    }
+
+    .navbar-nav.ml-auto.align-items-center {
+      margin: 0 auto;
+      margin-bottom: 30px;
+
+      li {
+        margin-bottom: 10px;
+      }
+    }
+  }
+
+  .dismiss-menu {
+    display: block;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 999;
+  }
+}
+.nav-infos-contact {
+  li {
+    position: relative;
+    padding: 5px 0;
+    padding-left: 40px;
+    + li {
+      margin-left: 30px;
+    }
+    em {
+      @include posCenterY();
+    }
+  }
+}
+.nav-social-contact {
+  li {
+    + li {
+      margin-left: 15px;
+    }
+  }
+}
+@include bp(0, '1200px') {
+  .block-detail-contact {
+    .d-flex {
+      flex-wrap: wrap;
+    }
+    .nav-infos-contact {
+      width: 100%;
+    }
+    .nav-social-contact {
+      width: 100%;
+    }
+    li {
+      margin-bottom: 15px;
+    }
+  }
+}

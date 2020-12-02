@@ -1,0 +1,148 @@
+service: tutelage-chime-service
+frameworkVersion: '>=1.1.0 <2.0.0'
+
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'ap-southeast-1'}
+  profile: tce
+  memorySize: 1024
+  timeout: 60
+  logRetentionInDays: 7
+  stackTags:
+    Customer: Tutelage
+  tags:
+    Customer: Tutelage
+  tracing:
+    lambda: true
+  apiGateway:
+    restApiId: !ImportValue TutelageApiGW-RestApiId-DEV
+    restApiRootResourceId: !ImportValue TutelageApiGW-RootResourceId-DEV
+  deploymentPrefix: tutelage-chime-service
+  cfnRole: arn:aws:iam::074127281063:role/tutelage-service-${self:provider.stage}-cfnRole
+  versionFunctions: false
+  environment:
+    LOG_LEVEL: 'DEBUG'
+    STAGE: ${opt:stage, 'dev'}
+  iamRoleStatements:
+    - Effect: Allow
+      Action:
+        - 'chime:CreateMeeting'
+        - 'chime:DeleteMeeting'
+        - 'chime:GetMeeting'
+        - 'chime:ListMeetings'
+        - 'chime:BatchCreateAttendee'
+        - 'chime:CreateAttendee'
+        - 'chime:DeleteAttendee'
+        - 'chime:GetAttendee'
+        - 'chime:ListAttendees'
+      Resource: '*'
+    - Effect: Allow
+      Action:
+        - 'logs:CreateLogStream'
+        - 'logs:PutLogEvents'
+        - 'logs:DescribeLogStreams'
+      Resource: '*'
+    - Effect: Allow
+      Action:
+        - sqs:SendMessage
+        - sqs:GetQueueUrl
+      Resource: !GetAtt MeetingNotificationsQueue.Arn
+
+package:
+  individually: true
+  excludeDevDependencies: false
+  # path: dist/apps/chime-service
+  custom:
+    enable_optimize:
+      local: false
+
+custom:
+  cors:
+    origin: '*'
+    headers:
+      - Cache-Control
+      - Content-Type
+      - Authorization
+      - Accept
+      - Accept-Encoding
+      - X-Amz-Date
+      - X-Api-Key
+      - X-Amz-Security-Token
+      - X-Amz-User-Agent
+      - X-Account-Alias
+    allowCredentials: false
+  serverless-offline:
+    httpPort: 3336
+    lambdaPort: 8003
+
+functions:
+  join:
+    handler: src/functions/join.handler
+    events:
+      - http:
+          path: /join
+          method: POST
+  end:
+    handler: src/functions/end.handler
+    events:
+      - http:
+          path: /end
+          method: POST
+  log:
+    handler: src/functions/log.handler
+    events:
+      - http:
+          path: /logs
+          method: POST
+  notify-sqs:
+    handler: src/functions/notify-sqs.handler
+    events:
+      - sqs: !GetAtt MeetingNotificationsQueue.Arn
+
+  notify-cloud-watch:
+    handler: src/functions/notify-cloud-watch.handler
+    events:
+      - cloudwatchEvent:
+          event:
+            source:
+              - aws.chime
+            detail-type:
+              - 'Chime Meeting State Change'
+
+resources:
+  Description: The AWS CloudFormation template for Chime Service
+  Resources:
+    Meetings:
+      Type: AWS::DynamoDB::Table
+      Properties:
+        TableName: ${self:service}-${self:provider.stage}
+        AttributeDefinitions:
+          - AttributeName: 'Title'
+            AttributeType: 'S'
+          - AttributeName: 'Passcode'
+            AttributeType: 'S'
+        BillingMode: PAY_PER_REQUEST
+        KeySchema:
+          - AttributeName: 'Title'
+            KeyType: HASH
+        GlobalSecondaryIndexes:
+          - IndexName: 'Passcode'
+            KeySchema:
+              - AttributeName: 'Passcode'
+                KeyType: HASH
+            Projection:
+              ProjectionType: ALL
+        TimeToLiveSpecification:
+          AttributeName: 'TTL'
+          Enabled: true
+    MeetingNotificationsQueue:
+      Type: AWS::SQS::Queue
+      Properties:
+        QueueName: ${self:service}-${self:provider.stage}
+    ChimeBrowserLogs:
+      Type: AWS::Logs::LogGroup
+
+plugins:
+  - serverless-offline

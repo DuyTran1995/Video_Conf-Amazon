@@ -1,0 +1,11 @@
+{
+    "AppSyncApiName": "tutelagemonorepo",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": "false",
+    "AuthCognitoUserPoolId": {
+        "Fn::GetAtt": [
+            "authtutelagemonorepoe0bdc453",
+            "Outputs.UserPoolId"
+        ]
+    }
+}

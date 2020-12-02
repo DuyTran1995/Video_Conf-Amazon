@@ -1,0 +1,17 @@
+{
+    "projectName": "tutelagemonorepo",
+    "version": "3.0",
+    "frontend": "javascript",
+    "javascript": {
+        "framework": "react",
+        "config": {
+            "SourceDir": "generated-amplify",
+            "DistributionDir": "dist/apps/tutelage-app",
+            "BuildCommand": "nx build tutelage-app --prod",
+            "StartCommand": "nx serve tutelage-app"
+        }
+    },
+    "providers": [
+        "awscloudformation"
+    ]
+}

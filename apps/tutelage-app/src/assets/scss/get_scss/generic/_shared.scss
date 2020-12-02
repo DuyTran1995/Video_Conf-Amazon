@@ -1,0 +1,35 @@
+body {
+  font-family: $font_base;
+  font-size: 14px;
+  line-height: 24px;
+  a:hover {
+    opacity: 0.8;
+    text-decoration: none;
+    transition: all 0.3s;
+  }
+  hr {
+    margin: 0 auto;
+  }
+  h5 {
+    font-size: 18px;
+    font-weight: normal;
+  }
+}
+main {
+  min-height: 50vh;
+}
+.only-sp {
+  display: none;
+}
+@include bp('sp') {
+  .only-sp {
+    display: block;
+  }
+  .only-pc {
+    display: none;
+  }
+}
+span,
+strong {
+  display: inline-block;
+}

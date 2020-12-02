@@ -1,0 +1,623 @@
+{
+  "version": 1,
+  "projects": {
+    "video-conf-app": {
+      "root": "apps/video-conf-app",
+      "sourceRoot": "apps/video-conf-app/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/video-conf-app",
+            "index": "apps/video-conf-app/src/index.html",
+            "main": "apps/video-conf-app/src/main.tsx",
+            "polyfills": "apps/video-conf-app/src/polyfills.ts",
+            "tsConfig": "apps/video-conf-app/tsconfig.app.json",
+            "assets": ["apps/video-conf-app/src/favicon.ico", "apps/video-conf-app/src/assets"],
+            "styles": ["apps/video-conf-app/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/video-conf-app/src/environments/environment.ts",
+                  "with": "apps/video-conf-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "video-conf-app:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "video-conf-app:build:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/video-conf-app/.eslintrc",
+            "tsConfig": [
+              "apps/video-conf-app/tsconfig.app.json",
+              "apps/video-conf-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/video-conf-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/video-conf-app/jest.config.js",
+            "tsConfig": "apps/video-conf-app/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "video-conf-app-e2e": {
+      "root": "apps/video-conf-app-e2e",
+      "sourceRoot": "apps/video-conf-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/video-conf-app-e2e/cypress.json",
+            "tsConfig": "apps/video-conf-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "video-conf-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "video-conf-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/video-conf-app-e2e/.eslintrc",
+            "tsConfig": ["apps/video-conf-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/video-conf-app-e2e/**"]
+          }
+        }
+      }
+    },
+    "chime-service": {
+      "root": "apps/chime-service",
+      "sourceRoot": "apps/chime-service/src",
+      "projectType": "application",
+      "prefix": "chime-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@flowaccount/nx-serverless:build",
+          "options": {
+            "outputPath": "dist/apps/chime-service",
+            "package": "apps/chime-service",
+            "serverlessConfig": "apps/chime-service/serverless.yml",
+            "servicePath": "apps/chime-service",
+            "tsConfig": "apps/chime-service/tsconfig.app.json",
+            "provider": "aws",
+            "processEnvironmentFile": "env.json"
+          },
+          "configurations": {
+            "dev": {
+              "optimization": false,
+              "sourceMap": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/chime-service/environment.ts",
+                  "with": "apps/chime-service/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@flowaccount/nx-serverless:offline",
+          "options": {
+            "buildTarget": "chime-service:build",
+            "config": "apps/chime-service/serverless.yml",
+            "location": "dist/apps/chime-service"
+          },
+          "configurations": {
+            "dev": {
+              "buildTarget": "chime-service:build:dev"
+            },
+            "production": {
+              "buildTarget": "chime-service:build:production"
+            }
+          }
+        },
+        "deploy": {
+          "builder": "@flowaccount/nx-serverless:deploy",
+          "options": {
+            "buildTarget": "chime-service:build:production",
+            "config": "apps/chime-service/serverless.yml",
+            "location": "dist/apps/chime-service",
+            "package": "dist/apps/chime-service"
+          }
+        },
+        "destroy": {
+          "builder": "@flowaccount/nx-serverless:destroy",
+          "options": {
+            "buildTarget": "chime-service:build:production",
+            "config": "apps/chime-service/serverless.yml",
+            "location": "dist/apps/chime-service",
+            "package": "dist/apps/chime-service"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/chime-service/tsconfig.app.json",
+              "apps/chime-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/chime-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/chime-service/jest.config.js",
+            "tsConfig": "apps/chime-service/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "ws-root-apig": {
+      "root": "apps/ws-root-apig",
+      "sourceRoot": "apps/ws-root-apig/src",
+      "projectType": "application",
+      "prefix": "ws-root-apig",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@flowaccount/nx-serverless:build",
+          "options": {
+            "outputPath": "dist/apps/ws-root-apig",
+            "package": "apps/ws-root-apig",
+            "serverlessConfig": "apps/ws-root-apig/serverless.yml",
+            "servicePath": "apps/ws-root-apig",
+            "tsConfig": "apps/ws-root-apig/tsconfig.app.json",
+            "provider": "aws",
+            "processEnvironmentFile": "env.json"
+          },
+          "configurations": {
+            "dev": {
+              "optimization": false,
+              "sourceMap": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            },
+            "production": {
+              "optimization": true,
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/ws-root-apig/environment.ts",
+                  "with": "apps/ws-root-apig/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@flowaccount/nx-serverless:offline",
+          "options": {
+            "buildTarget": "ws-root-apig:build",
+            "config": "apps/ws-root-apig/serverless.yml",
+            "location": "dist/apps/ws-root-apig"
+          },
+          "configurations": {
+            "dev": {
+              "buildTarget": "ws-root-apig:build:dev"
+            },
+            "production": {
+              "buildTarget": "ws-root-apig:build:production"
+            }
+          }
+        },
+        "deploy": {
+          "builder": "@flowaccount/nx-serverless:deploy",
+          "options": {
+            "buildTarget": "ws-root-apig:build:production",
+            "config": "apps/ws-root-apig/serverless.yml",
+            "location": "dist/apps/ws-root-apig",
+            "package": "dist/apps/ws-root-apig"
+          }
+        },
+        "destroy": {
+          "builder": "@flowaccount/nx-serverless:destroy",
+          "options": {
+            "buildTarget": "ws-root-apig:build:production",
+            "config": "apps/ws-root-apig/serverless.yml",
+            "location": "dist/apps/ws-root-apig",
+            "package": "dist/apps/ws-root-apig"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ws-root-apig/tsconfig.app.json",
+              "apps/ws-root-apig/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/ws-root-apig/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/ws-root-apig/jest.config.js",
+            "tsConfig": "apps/ws-root-apig/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tutelage-app": {
+      "root": "apps/tutelage-app",
+      "sourceRoot": "apps/tutelage-app/src",
+      "projectType": "application",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:build",
+          "options": {
+            "outputPath": "dist/apps/tutelage-app",
+            "index": "apps/tutelage-app/src/index.html",
+            "main": "apps/tutelage-app/src/main.tsx",
+            "polyfills": "apps/tutelage-app/src/polyfills.ts",
+            "tsConfig": "apps/tutelage-app/tsconfig.app.json",
+            "assets": ["apps/tutelage-app/src/favicon.ico", "apps/tutelage-app/src/assets"],
+            "styles": ["apps/tutelage-app/src/assets/scss/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/tutelage-app/src/environments/environment.ts",
+                  "with": "apps/tutelage-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "tutelage-app:build"
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "tutelage-app:build:production"
+            }
+          }
+        },
+        "deploy": {
+          "builder": "@nrwl/workspace:run-commands",
+          "options": {
+            "commands": [
+              {
+                "command": "cd apps/tutelage-app && serverless --debug --aws-profile tutelage --region ap-southeast-1 --stage dev"
+              }
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/tutelage-app/.eslintrc",
+            "tsConfig": [
+              "apps/tutelage-app/tsconfig.app.json",
+              "apps/tutelage-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/tutelage-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tutelage-app/jest.config.js",
+            "tsConfig": "apps/tutelage-app/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tutelage-app-e2e": {
+      "root": "apps/tutelage-app-e2e",
+      "sourceRoot": "apps/tutelage-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/tutelage-app-e2e/cypress.json",
+            "tsConfig": "apps/tutelage-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "tutelage-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "tutelage-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/tutelage-app-e2e/.eslintrc",
+            "tsConfig": ["apps/tutelage-app-e2e/tsconfig.e2e.json"],
+            "exclude": ["**/node_modules/**", "!apps/tutelage-app-e2e/**"]
+          }
+        }
+      }
+    },
+    "tutelage-service": {
+      "root": "apps/tutelage-service",
+      "sourceRoot": "apps/tutelage-service/src",
+      "projectType": "application",
+      "prefix": "tutelage-service",
+      "schematics": {},
+      "architect": {
+        "build": {
+          "builder": "@nrwl/node:build",
+          "options": {
+            "outputPath": "dist/apps/tutelage-service",
+            "main": "apps/tutelage-service/src/main.ts",
+            "tsConfig": "apps/tutelage-service/tsconfig.app.json",
+            "assets": ["apps/tutelage-service/src/assets"]
+          },
+          "configurations": {
+            "production": {
+              "optimization": true,
+              "extractLicenses": true,
+              "inspect": false,
+              "fileReplacements": [
+                {
+                  "replace": "apps/tutelage-service/src/environments/environment.ts",
+                  "with": "apps/tutelage-service/src/environments/environment.prod.ts"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/node:execute",
+          "options": {
+            "buildTarget": "tutelage-service:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "apps/tutelage-service/.eslintrc",
+            "tsConfig": [
+              "apps/tutelage-service/tsconfig.app.json",
+              "apps/tutelage-service/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/tutelage-service/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/tutelage-service/jest.config.js",
+            "tsConfig": "apps/tutelage-service/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "shared-react-util": {
+      "root": "libs/shared/react-util",
+      "sourceRoot": "libs/shared/react-util/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/shared/react-util/.eslintrc",
+            "tsConfig": [
+              "libs/shared/react-util/tsconfig.lib.json",
+              "libs/shared/react-util/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/shared/react-util/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/shared/react-util/jest.config.js",
+            "tsConfig": "libs/shared/react-util/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    },
+    "tutelage-api-interfaces": {
+      "root": "libs/tutelage/api-interfaces",
+      "sourceRoot": "libs/tutelage/api-interfaces/src",
+      "projectType": "library",
+      "schematics": {},
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:lint",
+          "options": {
+            "linter": "eslint",
+            "config": "libs/tutelage/api-interfaces/.eslintrc",
+            "tsConfig": [
+              "libs/tutelage/api-interfaces/tsconfig.lib.json",
+              "libs/tutelage/api-interfaces/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/tutelage/api-interfaces/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/tutelage/api-interfaces/jest.config.js",
+            "tsConfig": "libs/tutelage/api-interfaces/tsconfig.spec.json",
+            "passWithNoTests": true
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "defaultCollection": "@nrwl/react"
+  },
+  "schematics": {
+    "@nrwl/workspace": {
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/cypress": {
+      "cypress-project": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/react": {
+      "application": {
+        "style": "scss",
+        "linter": "eslint",
+        "babel": true
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
+      },
+      "storybook-configuration": {
+        "linter": "eslint"
+      },
+      "component": {
+        "style": "scss"
+      }
+    },
+    "@nrwl/next": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/web": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/node": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nx-plugin": {
+      "plugin": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/nest": {
+      "application": {
+        "linter": "eslint"
+      }
+    },
+    "@nrwl/express": {
+      "application": {
+        "linter": "eslint"
+      },
+      "library": {
+        "linter": "eslint"
+      }
+    }
+  },
+  "defaultProject": "video-conf-app"
+}

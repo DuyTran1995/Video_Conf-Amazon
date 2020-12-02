@@ -1,0 +1,116 @@
+.vanilla-calendar {
+  &.type-01 {
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    .vanilla-calendar-header__label {
+      font-weight: normal;
+      text-transform: capitalize;
+      font-size: 17px;
+    }
+    .vanilla-calendar-week {
+      background-color: transparent;
+      span {
+        font-weight: normal;
+        text-transform: capitalize;
+        font-size: 14px;
+        line-height: 24px;
+        color: $color_base;
+      }
+    }
+    .vanilla-calendar-date {
+      span {
+        background-color: transparent;
+        width: 39px;
+        height: 39px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 39px;
+      }
+      &--today {
+        background-color: transparent;
+        span {
+          background-color: $color_green;
+          color: #ffffff;
+        }
+      }
+      &.vanilla-calendar-date--selected {
+        background-color: transparent;
+        span {
+          background-color: #4ad7c1;
+          color: #ffffff;
+        }
+      }
+      &:hover {
+        background-color: transparent;
+        span {
+          background-color: rgba($color: #4ad7c1, $alpha: 0.2);
+          color: #ffffff;
+        }
+      }
+      &--today {
+        span {
+          background-color: rgba($color: $color_green, $alpha: 0.6);
+        }
+      }
+    }
+  }
+  .vanilla-calendar-btn {
+    height: 30px;
+    width: 30px;
+    background: url('../images/icon/select.png') center center no-repeat;
+    &[data-calendar-toggle='previous'] {
+      transform: rotate(90deg);
+      left: -10px;
+      position: absolute;
+      top: 5px;
+    }
+    &[data-calendar-toggle='next'] {
+      transform: rotate(-90deg);
+      position: absolute;
+      top: 5px;
+      right: -10px;
+    }
+    svg {
+      display: none;
+    }
+  }
+  .vanilla-calendar-header {
+    position: relative;
+  }
+}
+.getTimeCalendar {
+  .caroussel-cell {
+    width: calc(100% / 7);
+    font-size: 17px;
+    font-weight: normal;
+    text-align: center;
+    &:hover {
+      span {
+        color: $color_green;
+      }
+    }
+  }
+  .flickity-prev-next-button {
+    height: 30px;
+    width: 30px;
+    background: url('../images/icon/select.png') center center no-repeat;
+    margin-top: -15px;
+    &.previous {
+      transform: rotate(90deg);
+      left: -10px;
+    }
+    &.next {
+      transform: rotate(-90deg);
+      right: -10px;
+    }
+  }
+  svg {
+    display: none;
+  }
+  .is-clicked {
+    span {
+      color: $color_green;
+    }
+  }
+}

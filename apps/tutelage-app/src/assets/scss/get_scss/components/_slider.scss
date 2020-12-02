@@ -1,0 +1,32 @@
+.glide__arrows {
+  position: absolute;
+  bottom: 23px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  z-index: 99;
+}
+.glide__bullets {
+  position: absolute;
+  bottom: 61px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .glide__bullet {
+    width: 8px;
+    height: 8px;
+    border-radius: 100%;
+    padding: 0;
+    display: inline-block;
+    background-color: $color_green;
+    margin: 0 4px;
+    transition: all 0.3s;
+    &.glide__bullet--active {
+      width: 53px;
+      height: 8px;
+      border-radius: 23px;
+      background-color: $color_red;
+    }
+  }
+}

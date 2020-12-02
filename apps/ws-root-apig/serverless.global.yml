@@ -1,0 +1,63 @@
+service: tutelage
+provider:
+  name: aws
+  runtime: nodejs12.x
+  stage: ${opt:stage, 'dev'}
+  region: ${opt:region, 'us-east-1'}
+  memorySize: 512
+  timeout: 30
+  logRetentionInDays: 7
+  versionFunctions: false
+  endpointType: regional
+  stackTags:
+    Customer: Tutelage
+  tags:
+    Customer: Tutelage
+  tracing:
+    apiGateway: true
+    lambda: true
+  logs:
+    restApi:
+      accessLogging: false
+      format: 'requestId: $context.requestId'
+      executionLogging: true
+      level: INFO
+      fullExecutionData: true
+    websocket: false
+    frameworkLambda: true
+
+custom:
+  vpc:
+    dev:
+      # If you don't want to run Lambda under a Vpc, then just give it an empty array
+      securityGroupIds: []
+      subnetIds: []
+
+    sit:
+      # If you don't want to run Lambda under a Vpc, then just give it an empty array
+      securityGroupIds: []
+      subnetIds: []
+
+    # uat:
+    #   securityGroupIds:
+    #     - sg-05ce50c3fd8ec52e4
+    #   subnetIds:
+    #     - subnet-0ba745f2e81d15c28
+    #     - subnet-0ebe567fc7622cb0b
+
+    # You can add more stages here
+
+  cors:
+    origin: '*'
+    headers:
+      - Cache-Control
+      - Content-Type
+      - Authorization
+      - Accept
+      - Accept-Encoding
+      - X-Amz-Date
+      - X-Api-Key
+      - X-Amz-Security-Token
+      - X-Amz-User-Agent
+      - X-Account-Alias
+    allowCredentials: false

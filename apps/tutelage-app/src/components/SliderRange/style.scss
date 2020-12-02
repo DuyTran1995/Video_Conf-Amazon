@@ -1,0 +1,46 @@
+.slider-range {
+  position: relative;
+  &::after {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #333;
+  }
+  &::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    position: absolute;
+    top: 40%;
+    -webkit-transform: translateY(-50%);
+    transform: translateY(-50%);
+    background-color: #333;
+  }
+  &-start {
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+  }
+  &-end {
+    position: absolute;
+    bottom: -20px;
+    right: 0;
+  }
+  &-custom {
+    & > .MuiSlider-rail {
+      color: silver !important;
+    }
+    & > .MuiSlider-track {
+      color: #333 !important;
+    }
+    & > .MuiSlider-thumb {
+      color: #333 !important;
+    }
+  }
+}

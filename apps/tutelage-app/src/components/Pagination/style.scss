@@ -1,0 +1,9 @@
+.page-item.active .page-link {
+  background: none !important;
+}
+
+.page-item.active .page-link > span {
+  color: #fe4a49 !important;
+  transform: scale(1.5);
+  background: none !important;
+}

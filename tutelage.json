@@ -1,0 +1,12 @@
+{
+  "services": {
+    "ws-root-apig": {
+      "port": 3333,
+      "lambdaPort": 8000
+    },
+    "chime-service": {
+      "port": 3336,
+      "lambdaPort": 8003
+    }
+  }
+}

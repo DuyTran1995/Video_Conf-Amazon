@@ -1,0 +1,19 @@
+.section {
+  &--01 {
+    margin-top: 40px;
+
+    .title--lg {
+      margin-bottom: 20px;
+    }
+
+    .media-block__body {
+      .media-block__text {
+        margin-bottom: 15px;
+        text-align: justify;
+        @media (max-width: 600px) {
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+.btn-search {
+  width: calculate-rem(35px);
+  height: calculate-rem(35px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color_gray_d;
+  border-radius: 50%;
+}
+.btn-start {
+  width: 11vw;
+}
+.btn--readmore {
+  width: 213px;
+  height: 54px;
+  border-radius: 33px;
+  background-color: #ff4b4b;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  em {
+    margin-left: 20px;
+  }
+}
+.btn {
+  &:focus {
+    outline: none;
+    box-shadow: none;
+  }
+}
+#backToTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  opacity: 0;
+  transition: all 0.5s;
+  z-index: -1;
+  &.active {
+    opacity: 1;
+    transition: all 0.5s;
+    z-index: 99;
+  }
+}
+.btn--red {
+  min-width: 188px;
+  height: 48px;
+  border-radius: 100px;
+  background-color: #fe4a49;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  &.btn--shadow {
+    box-shadow: 0 3px 6px #fe4a49;
+  }
+  // @include bp(0,'600px') {
+  //   min-width: 0;
+  // }
+}
+.btn-danger {
+  color: #fff;
+  background-color: $color_red;
+  border-color: $color_red;
+}
+.btn--login-face {
+  @include flex-center();
+  border: 1px solid #4267b2;
+  position: relative;
+  padding-left: 50px;
+  padding-right: 50px;
+  color: #29487d;
+  height: 48px;
+  font-size: 18px;
+  em {
+    @include posCenterY();
+    position: absolute;
+    left: 6px;
+  }
+}

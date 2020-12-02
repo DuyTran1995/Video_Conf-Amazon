@@ -1,0 +1,12 @@
+.alert-custom-notification {
+  height: 50px;
+  position: relative;
+  text-align: center;
+  & > p {
+    position: absolute;
+    top: 50%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+  }
+}

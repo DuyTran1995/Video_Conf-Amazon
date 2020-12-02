@@ -1,0 +1,23 @@
+.footer {
+  padding-bottom: 15px;
+  &__top {
+    padding: 15px 0;
+    margin: 0 calculate-rem(-15px);
+  }
+  &__bottom {
+    margin: 0 calculate-rem(-15px);
+  }
+  .nav-link {
+    color: #ffffff;
+    &.active,
+    &:hover {
+      color: $color_red;
+    }
+    > em {
+      display: block;
+    }
+  }
+  .copyright {
+    color: #ffffff;
+  }
+}

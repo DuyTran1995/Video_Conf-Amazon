@@ -1,0 +1,31 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Debug Chime Service (dev stage)",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "npm",
+      "console": "integratedTerminal",
+      "runtimeArgs": [
+        "run-script",
+        "debug:serverless",
+        "--",
+        "offline",
+        "start",
+        "--stage",
+        "dev",
+        "--config",
+        "apps/chime-service/serverless.yml"
+      ],
+      "port": 5858,
+      "sourceMaps": true,
+      "smartStep": true,
+      "envFile": "${workspaceFolder}/.env"
+    }
+  ]
+}

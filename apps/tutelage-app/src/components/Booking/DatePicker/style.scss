@@ -1,0 +1,48 @@
+.component-datepicker > div > .react-datepicker {
+  width: 100% !important;
+  .react-datepicker {
+    &__month-container {
+      width: 88.8% !important;
+    }
+    &__day-name {
+      width: 12.5%;
+      height: 2.5rem;
+      line-height: 2.5rem;
+    }
+    &__day {
+      width: 12.5%;
+      height: 2.5rem;
+      pointer-events: none;
+      line-height: 2.5rem;
+      color: #ccc;
+    }
+    &__day--selected {
+      border-radius: 0.3rem;
+      background-color: #4ad7c1 !important;
+      color: #fff !important;
+      font-size: 18px;
+      pointer-events: none;
+    }
+
+    &__time-list-item--selected {
+      border-radius: 0.3rem;
+      background-color: #4ad7c1 !important;
+      color: #fff !important;
+    }
+  }
+}
+.select-duration {
+  width: 30% !important;
+}
+.highlight {
+  font-size: 16px;
+  border-radius: 0.3rem;
+  border: 1px solid #4ad7c1 !important;
+  background-color: white !important;
+  color: #4ad7c1 !important;
+  pointer-events: initial !important;
+}
+.disable {
+  color: #ccc;
+  pointer-events: none;
+}

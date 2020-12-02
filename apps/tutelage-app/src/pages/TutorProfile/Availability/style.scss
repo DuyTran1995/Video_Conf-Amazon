@@ -1,0 +1,38 @@
+.highlight {
+  border: 1px solid #6edfcd;
+  background-color: #6edfcd;
+  border-radius: 5px;
+}
+
+.component-datepicker > div > .react-datepicker {
+  width: 100% !important;
+  .react-datepicker {
+    &__month-container {
+      width: 100% !important;
+    }
+    &__day {
+      width: 6rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+    }
+    &__day--selected {
+      border-radius: 0.3rem;
+      background-color: #4ad7c1;
+      color: #fff;
+      font-size: 18px;
+    }
+    &--available {
+      font-size: 16px;
+      border-radius: 0.3rem;
+      border: 1px solid #4ad7c1;
+      background-color: white;
+      color: #4ad7c1;
+    }
+    &__day,
+    &__day-name {
+      width: 6rem;
+      height: 2.5rem;
+      line-height: 2.5rem;
+    }
+  }
+}
