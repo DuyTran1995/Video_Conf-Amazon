@@ -1,8 +1,14 @@
-# Tutelage
+# Video Conferencing App
+- Using Reactjs (Typescript) in Frontend
+- Amazon Web Service Chime handle Video Conferencing (Room, Attendence, Call Video, Screen Shot, Chat RealTime)
+- Amplify Amazon Web Service Handle Authentication & Authorization
+- Dynamo DB Handle Api Using Graphql
+- Serverless
+- Lambda
+- Circle CI
 
-Tutelage was borne from the crazy idea of trusting teachers and empowering students.
-
-Tutelage seeks to empower learners by providing them with an affordable platform that matches them with a licensed teacher in their desired area of study and taps into the often- undervalued talent of teachers beyond the classroom.
+# Nx Dev Tool
+- Using Nx Dev Tool share code between them all in the same workspace (frontend - backend)
 
 ## Installation
 
