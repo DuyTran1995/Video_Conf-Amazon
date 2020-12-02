@@ -1,6 +1,6 @@
 # Video Conferencing App
 - Using Reactjs (Typescript) in Frontend
-- Amazon Web Service Chime handle Video Conferencing (Room, Attendence, Call Video, Screen Shot, Chat RealTime)
+- Amazon Web Service Chime handle Video Conferencing (Room, Attendence, Call Video, Screen recorder, Share Screen, Chat RealTime)
 - Amplify Amazon Web Service Handle Authentication & Authorization
 - Dynamo DB Handle Api Using Graphql
 - Serverless
